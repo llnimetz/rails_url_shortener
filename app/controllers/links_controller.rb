@@ -7,8 +7,11 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(params[:link])
     @link.create_short_url
-    @link.save
-    redirect_to @link
+    if @link.save
+      redirect_to @link
+    else
+      redirect_to new_link_path, notice: "Your URL is not valid."
+    end
   end
 
   def show

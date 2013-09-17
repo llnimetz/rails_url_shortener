@@ -1,6 +1,12 @@
 <p>new.html.erb</p>
 
+
 <%= form_for @link do |f| %>
   <%= f.text_field :url %>
   <%= f.submit "create" %>
+<% end %>
+
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, class: name %>
 <% end %>
